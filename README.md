@@ -1,26 +1,54 @@
 # M_path
 
-## parse mathematical expressions
+## Fortran OOP interface for a  POSIX pathname 
 
-   The M_path(3f) module contains a module that creates an OOP interface
-   to other modules in the 
+   The M_path(3f) module creates an OOP (Object Oriented Programming) interface to other modules in the 
    [GPF ](https://github.com/urbanjost?tab=repositories)
-   (General Purpose Fortran) package.
+   (General Purpose Fortran) package found at
 
 ```back
     git clone https://github.com/urbanjost/general-purpose-fortran
 ```
+   It allows the typical components of a pathname on a POSIX system (Such as GNU/Linux, Unix
+   and Cygwin) to be accessed easily, to render the full pathname of the path and to get basic
+   file properties (permissions, size, ownership, ...). The type defined is
+```fortran
+       type path
 
-   It requires other modules from the package. You should get and build
-   the GPF package for a conventional way of accessing this module. This
+             ! COMPONENTS:
+             character(len=:),allocatable :: name
+       contains
+
+             ! METHODS:
+             procedure    :: branch
+             procedure    :: leaf
+             procedure    :: stem
+             procedure    :: bud
+             procedure    :: init
+             procedure    :: is_dir
+             procedure    :: stat
+             procedure    :: readable
+             procedure    :: writable
+             procedure    :: executable
+             procedure    :: exists
+             procedure    :: realpath
+
+             ! OVERLOADED OPERATORS FOR TYPE(path)
+             procedure,private :: eq
+             generic           :: operator(==)  => eq
+       end type path
+```
+
+   It requires other modules from the package (_Note that you can get and build
+   the GPF package with just a Fortran compiler and make(1)_). This
    repository is intended for allowing access to the module and its
-   dependencies via the fpm (Fortran Package Manager). Specifically,
+   dependencies via the `fpm` (Fortran Package Manager). Specifically,
    the Fortran version (not the Haskell version).
 
 ## DOWNLOAD
 
    To create a copy for alteration using `fpm` use or download the github
-   repository and build it with fpm ( as described at
+   repository and build it with `fpm` ( as described at
    [Fortran Package Manager](https://github.com/fortran-lang/fpm) )
    use
 
@@ -33,7 +61,7 @@
 ```
 
    but to use this as intended as a dependency in your fpm.toml project file
-   just add the following:
+   just add the following into your `fpm` manifest file:
 
 ```toml
      [dependencies]
@@ -42,5 +70,4 @@
 
 ## DOCUMENTATION
 
-   The [documentation](https://urbanjost.github/io/M_path.3.html)
-   is included as a manpage(1) and as HTML.
+   The [documentation](https://urbanjost.github/io/path.3m_path.html)
