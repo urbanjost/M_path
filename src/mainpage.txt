@@ -1,0 +1,10 @@
+'mainpage.txt
+/**
+     @mainpage M_path Fortran Library
+
+     @section Introduction
+       A OOP interface to pathname-related and file-related procedures
+       in the GPF (General Purpose Fortran) package
+
+     @image html html/images/swirl.gif
+*/'
