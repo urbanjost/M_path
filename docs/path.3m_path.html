@@ -215,49 +215,60 @@ Sample program:
    integer(kind=int64)                      :: buff(14)
    integer                                  :: i
       do i = 1 , max(1,command_argument_count())
-         if(command_argument_count().eq.0)then
-            filename=&#146;.&#146;
-         else
-            call getname(i,filename)
-         endif
+       if(command_argument_count().eq.0)then
+          filename=&#146;.&#146;
+       else
+          call getname(i,filename)
+       endif
 <P>
-         file%name=filename
-         ! or
-         call file%init(filename)
+       file%name=filename
+       ! or
+       call file%init(filename)
 <P>
-         deallocate(filename)
-         !
-         write(*,*)&#146;name&#46;&#46;&#46;..... &#146;,file%name
-         write(*,*)&#146;branch&#46;&#46;&#46;... &#146;,file%branch()
-         write(*,*)&#146;leaf&#46;&#46;&#46;..... &#146;,file%leaf()
-         write(*,*)&#146;stem&#46;&#46;&#46;..... &#146;,file%stem()
-         write(*,*)&#146;bud&#46;&#46;&#46;...... &#146;,file%bud()
-         write(*,*)&#146;is_dir&#46;&#46;&#46;... &#146;,file%is_dir()
-         write(*,*)&#146;readable&#46;&#46;&#46;. &#146;,file%readable()
-         write(*,*)&#146;writable&#46;&#46;&#46;. &#146;,file%writable()
-         write(*,*)&#146;executable.. &#146;,file%executable()
-         write(*,*)&#146;exists&#46;&#46;&#46;... &#146;,file%exists()
-         write(*,*)&#146;realpath&#46;&#46;&#46;. &#146;,file%realpath()
-         write(*,*)&#146;stat&#46;&#46;&#46;..... &#146;
-         buff=file%stat()
-         if(buff(14) == 0) then
-            write (*, FMT="(9x,&#146;Device ID(hex/decimal):&#146;,      T40, Z0,&#146;h/&#146;,I0,&#146;d&#146;)") buff(1),buff(1)
-            write (*, FMT="(9x,&#146;Inode number:&#146;,                T40, I0)") buff(2)
-            write (*, FMT="(9x,&#146;File mode (octal):&#146;,           T40, O19)") buff(3)
-            write (*, FMT="(9x,&#146;Number of links:&#146;,             T40, I0)") buff(4)
-            write (*, FMT="(9x,&#146;Owner&#146;&#146;s uid/username:&#146;,       T40, I0,1x, A)") buff(5), system_getpwuid(buff(5))
-            write (*, FMT="(9x,&#146;Owner&#146;&#146;s gid/group:&#146;,          T40, I0,1x, A)") buff(6), system_getgrgid(buff(6))
-            write (*, FMT="(9x,&#146;Device where located:&#146;,        T40, I0)") buff(7)
-            write (*, FMT="(9x,&#146;File size(bytes):&#146;,            T40, I0)") buff(8)
-            write (*, FMT="(9x,&#146;Last access time:&#146;,            T40, I0,1x, A)") buff(9), fmtdate(u2d(int(buff(9))),fmt_date)
-            write (*, FMT="(9x,&#146;Last modification time:&#146;,      T40, I0,1x, A)") buff(10),fmtdate(u2d(int(buff(10))),fmt_date)
-            write (*, FMT="(9x,&#146;Last status change time:&#146;,     T40, I0,1x, A)") buff(11),fmtdate(u2d(int(buff(11))),fmt_date)
-            write (*, FMT="(9x,&#146;Preferred block size(bytes):&#146;, T40, I0)") buff(12)
-            write (*, FMT="(9x,&#146;No. of blocks allocated:&#146;,     T40, I0)") buff(13)
-         else
-            write (*,*) &#146;*path%stat* error: &#146;,file%name,&#146; status= &#146;,status
-         endif
-         write(*,*)
+       write(*,*)&#146;name&#46;&#46;&#46;..... &#146;,file%name
+       write(*,*)&#146;branch&#46;&#46;&#46;... &#146;,file%branch()
+       write(*,*)&#146;leaf&#46;&#46;&#46;..... &#146;,file%leaf()
+       write(*,*)&#146;stem&#46;&#46;&#46;..... &#146;,file%stem()
+       write(*,*)&#146;bud&#46;&#46;&#46;...... &#146;,file%bud()
+       write(*,*)&#146;is_dir&#46;&#46;&#46;... &#146;,file%is_dir()
+       write(*,*)&#146;readable&#46;&#46;&#46;. &#146;,file%readable()
+       write(*,*)&#146;writable&#46;&#46;&#46;. &#146;,file%writable()
+       write(*,*)&#146;executable.. &#146;,file%executable()
+       write(*,*)&#146;exists&#46;&#46;&#46;... &#146;,file%exists()
+       write(*,*)&#146;realpath&#46;&#46;&#46;. &#146;,file%realpath()
+       write(*,*)&#146;stat&#46;&#46;&#46;..... &#146;
+       buff=file%stat()
+       if(buff(14) == 0) then
+        write (*,"(9x,&#146;Device ID(hex/decimal):&#146;, T40,Z0,&#146;h/&#146;,I0,&#146;d&#146;)")&
+        & buff(1),buff(1)
+        write (*,"(9x,&#146;Inode number:&#146;, T40, I0)")&
+        & buff(2)
+        write (*,"(9x,&#146;File mode (octal):&#146;, T40, O19)")&
+        & buff(3)
+        write (*,"(9x,&#146;Number of links:&#146;, T40, I0)")&
+        & buff(4)
+        write (*,"(9x,&#146;Owner&#146;&#146;s uid/username:&#146;, T40, I0,1x, A)")&
+        & buff(5), system_getpwuid(buff(5))
+        write (*,"(9x,&#146;Owner&#146;&#146;s gid/group:&#146;, T40, I0,1x, A)")&
+        & buff(6), system_getgrgid(buff(6))
+        write (*,"(9x,&#146;Device where located:&#146;, T40, I0)")&
+        & buff(7)
+        write (*,"(9x,&#146;File size(bytes):&#146;, T40, I0)")&
+        & buff(8)
+        write (*,"(9x,&#146;Last access time:&#146;, T40, I0,1x, A)")&
+        & buff(9), fmtdate(u2d(int(buff(9))),fmt_date)
+        write (*,"(9x,&#146;Last modification time:&#146;, T40, I0,1x, A)")&
+        & buff(10),fmtdate(u2d(int(buff(10))),fmt_date)
+        write (*,"(9x,&#146;Last status change time:&#146;, T40, I0,1x, A)")&
+        & buff(11),fmtdate(u2d(int(buff(11))),fmt_date)
+        write (*,"(9x,&#146;Preferred block size(bytes):&#146;, T40, I0)")&
+        & buff(12)
+        write (*,"(9x,&#146;No. of blocks allocated:&#146;, T40, I0)")&
+        & buff(13)
+       else
+        write (*,*) &#146;*path%stat* error: &#146;,file%name,&#146; status= &#146;,status
+       endif
+       write(*,*)
       enddo
 <P>
    contains
@@ -267,6 +278,7 @@ Sample program:
    integer                                  :: fn_length
    ! get pathname from command line arguments
       call get_command_argument (i , length=fn_length)
+      if(allocated(filename))deallocate(filename)
       allocate(character(len=fn_length) :: fn)
       call get_command_argument (i , value=fn)
    end subroutine getname
@@ -350,7 +362,7 @@ John S. Urban
 Public Domain
 </BLOCKQUOTE>
 <P><HR>
-<TABLE width=100%><TR> <TD width=33%><I></I></TD> <TD width=33% align=center>path (3m_path)</TD> <TD align=right width=33%><I>November 08, 2020</I></TD> </TR></TABLE><FONT SIZE=-1>Generated by <A HREF="http://www.squarebox.co.uk/download/manServer.shtml">manServer 1.08</A> from 4e16d8a7-b742-4e02-825c-1017dd06e82b using man macros.</FONT>
+<TABLE width=100%><TR> <TD width=33%><I></I></TD> <TD width=33% align=center>path (3m_path)</TD> <TD align=right width=33%><I>November 08, 2020</I></TD> </TR></TABLE><FONT SIZE=-1>Generated by <A HREF="http://www.squarebox.co.uk/download/manServer.shtml">manServer 1.08</A> from a66605a0-9512-48f1-a553-1952f0f9e089 using man macros.</FONT>
 <br><br><center><img src="images/path.gif"></center>
 </div>
 </div>
