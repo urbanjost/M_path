@@ -6,6 +6,9 @@ author = "John S. Urban"
 maintainer = "urbanjost@comcast.net"
 copyright = "2020 John S. Urban"
 description = "basic numeric expression parser"
+categories = ["File paths"]
+keywords = ["fortran", "paths", "filename"]
+homepage = "https://github.com/urbanjost/M_path.git"
 
 [library]
 source-dir="src"
@@ -16,17 +19,17 @@ M_system       = { git = "https://github.com/urbanjost/M_system.git" }
 M_io           = { git = "https://github.com/urbanjost/M_io.git" }
 M_system       = { git = "https://github.com/urbanjost/M_system.git" }
 M_time         = { git = "https://github.com/urbanjost/M_time.git" }
+M_strings      = { git = "https://github.com/urbanjost/M_strings.git" }
 
 [[executable]]
 name="path"
 source-dir="demo"
 main="path.f90"
 
-#[[test]]
-#name="runTests"
-#source-dir="test"
-#main="test_suite.f90"
-#[test.dependencies]
-#M_msg          = { git = "https://github.com/urbanjost/M_msg.git" }
-#
-#
+[[test]]
+name="test_suite_M_path"
+source-dir="test"
+main="test_suite_M_path.f90"
+[test.dependencies]
+M_msg = { git = "https://github.com/urbanjost/M_strings.git" }
+#M_msg = { git = "https://github.com/urbanjost/M_msg.git" }

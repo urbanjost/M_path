@@ -23,6 +23,8 @@
 !!       procedure    :: executable
 !!       procedure    :: exists
 !!       procedure    :: realpath
+!!       procedure    :: splitup
+!!       procedure    :: joinup
 !!
 !!       ! OVERLOADED OPERATORS FOR TYPE(path)
 !!       procedure,private :: eq
@@ -230,11 +232,14 @@ module M_path
 ! this to simply be a definition of a derived type ( TYPE(path) ) and the
 ! methods it supports and overloading of operators to support the new data type.
 !
-use M_io,     only : dirname   ! strip last component from filename
-use M_io,     only : splitpath ! split a Unix pathname into components
-Use M_system, only : system_isdir
-use M_system, only : system_stat, system_realpath, system_perror
-Use M_system, only : system_access, F_OK, R_OK, W_OK, X_OK
+use M_io,      only : dirname   ! strip last component from filename
+use M_io,      only : splitpath ! split a Unix pathname into components
+use M_io,      only : joinpath  ! split a Unix pathname into components
+use M_io,      only : separator
+use M_strings, only : substitute, split
+Use M_system,  only : system_isdir
+use M_system,  only : system_stat, system_realpath, system_perror
+Use M_system,  only : system_access, F_OK, R_OK, W_OK, X_OK
 use,intrinsic :: iso_fortran_env, only : int8, int16, int32, int64, real32, real64, real128
 use,intrinsic :: iso_fortran_env, only : dp=>real128
 
@@ -326,15 +331,27 @@ end subroutine init_path
 ! FUNCTIONS
 !===================================================================================================================================
 function branch(self) result (dirnm)
-use M_io, only : dirname
 class(path),intent(in)    :: self
 !type(path)                :: dirnm
 character(len=:),allocatable   :: dirnm
    dirnm=dirname(self%name)
 end function branch
 !===================================================================================================================================
+function splitup(self) result (names)
+class(path),intent(in)    :: self
+character(len=:),allocatable   :: names(:)
+   call split(self%name,names,'\/')
+end function splitup
+!===================================================================================================================================
+function joinup(self,a2,a3,a4,a5,a6,a7,a8,a9) result (name)
+class(path),intent(in)               :: self
+character(len=:),allocatable         :: name
+character(len=*),intent(in),optional :: a2
+character(len=*),intent(in),optional :: a3,a4,a5,a6,a7,a8,a9
+   name=joinpath(self%name,a2,a3,a4,a5,a6,a7,a8,a9)
+end function joinup
+!===================================================================================================================================
 function leaf(self) result (name)
-use M_io, only : dirname
 class(path),intent(in)    :: self
 character(len=:),allocatable   :: name
 integer,parameter :: maxlen=4096
