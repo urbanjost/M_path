@@ -31,5 +31,4 @@ name="test_suite_M_path"
 source-dir="test"
 main="test_suite_M_path.f90"
 [test.dependencies]
-M_msg = { git = "https://github.com/urbanjost/M_strings.git" }
-#M_msg = { git = "https://github.com/urbanjost/M_msg.git" }
+M_msg = { git = "https://github.com/urbanjost/M_msg.git" }
