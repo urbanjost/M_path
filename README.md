@@ -44,6 +44,9 @@
    repository is intended for allowing access to the module and its
    dependencies via the `fpm` (Fortran Package Manager). Specifically,
    the Fortran version (not the Haskell version).
+## DOCUMENTATION
+
+   The [man-page](https://urbanjost.github.io/M_path/index.html)
 
 ## DOWNLOAD
 
@@ -68,6 +71,3 @@
      M_path = { git = "https://github.com/urbanjost/M_path.git" }
 ```
 
-## DOCUMENTATION
-
-   The [documentation](https://urbanjost.github/io/path.3m_path.html)
