@@ -44,7 +44,7 @@
    repository is intended for allowing access to the module and its
    dependencies via the `fpm` (Fortran Package Manager). Specifically,
    the Fortran version (not the Haskell version).
-## DOCUMENTATION
+## DOCUMENTATION   ![docs](docs/images/docs.gif)
 
    The [man-page](https://urbanjost.github.io/M_path/index.html)
 
