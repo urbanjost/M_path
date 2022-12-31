@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="OOP interface for operations on a POSIX pathname">
-    
     <meta name="author" content="John S. Urban" >
     <link rel="icon" href="./favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="./css/pygments.css" rel="stylesheet">
     <link href="./css/font-awesome.min.css" rel="stylesheet">
     <link href="./css/local.css" rel="stylesheet">
-    
     <link  href="./tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,53 +43,27 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="./lists/files.html">Source Files</a></li>
-        
-        
-        
             <li><a href="./lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="./lists/procedures.html">Procedures</a></li>
-        
-               
-            <li><a href="./lists/types.html">Derived Types</a></li>
-        
-        
+                   <li><a href="./lists/types.html">Derived Types</a></li>
             <li><a href="./program/runtest.html">Program</a></li>
-      
+       
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="./lists/files.html">Source Files</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="./lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="./lists/procedures.html">Procedures</a></li>
-
-                             
-<li class="visible-xs hidden-sm visible-lg"><a href="./lists/types.html">Derived Types</a></li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="./program/runtest.html">Program</a></li>
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="./lists/files.html">Source Files</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="./lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="./lists/procedures.html">Procedures</a></li>
+                             <li class="visible-xs hidden-sm visible-lg"><a href="./lists/types.html">Derived Types</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="./program/runtest.html">Program</a></li>
+          </ul>
         <form action="./search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -103,181 +72,144 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
         <p>OOP interface for operations on a POSIX pathname</p>
-        	 
 	<p> Find us on&hellip;</p>
         <p>
-        	 
           <a class="btn btn-lg btn-primary" href="https://github.com/urbanjost/M_math" role="button">GitHub</a>
-			 
-			 
-			 
-			 
-	         
-			 
         </p>
       </div>
 
       <div class="row" id='text'>
-		  
         <div class="col-md-8">
-		  
           <h1>M_math</h1>
-          
+          <h1 id="m_path">M_path</h1>
+<h2 id="fortran-oop-interface-for-a-posix-pathname">Fortran OOP interface for a  POSIX pathname</h2>
+<p>The M_path(3f) module creates an OOP (Object Oriented Programming) interface to other modules in the 
+   <a href="https://github.com/urbanjost?tab=repositories">GPF </a>
+   (General Purpose Fortran) package found at</p>
+<div class="codehilite"><pre><span></span><code>    git clone https://github.com/urbanjost/general-purpose-fortran
+</code></pre></div>
+
+<p>It allows the typical components of a pathname on a POSIX system (Such as GNU/Linux, Unix
+   and Cygwin) to be accessed easily, to render the full pathname of the path and to get basic
+   file properties (permissions, size, ownership, &hellip;). The type defined is</p>
+<div class="codehilite"><pre><span></span><code><span class="w">       </span><span class="k">type </span><span class="n">path</span><span class="w"></span>
+
+<span class="w">             </span><span class="c">! COMPONENTS:</span>
+<span class="w">             </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">name</span><span class="w"></span>
+<span class="w">       </span><span class="k">contains</span><span class="w"></span>
+
+<span class="w">             </span><span class="c">! METHODS:</span>
+<span class="w">             </span><span class="k">procedure</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">branch</span><span class="w"></span>
+<span class="w">             </span><span class="k">procedure</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">leaf</span><span class="w"></span>
+<span class="w">             </span><span class="k">procedure</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">stem</span><span class="w"></span>
+<span class="w">             </span><span class="k">procedure</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">bud</span><span class="w"></span>
+<span class="w">             </span><span class="k">procedure</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">init</span><span class="w"></span>
+<span class="w">             </span><span class="k">procedure</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">is_dir</span><span class="w"></span>
+<span class="w">             </span><span class="k">procedure</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="nb">stat</span>
+<span class="nb">             </span><span class="k">procedure</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">readable</span><span class="w"></span>
+<span class="w">             </span><span class="k">procedure</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">writable</span><span class="w"></span>
+<span class="w">             </span><span class="k">procedure</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">executable</span><span class="w"></span>
+<span class="w">             </span><span class="k">procedure</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">exists</span><span class="w"></span>
+<span class="w">             </span><span class="k">procedure</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">realpath</span><span class="w"></span>
+
+<span class="w">             </span><span class="c">! OVERLOADED OPERATORS FOR TYPE(path)</span>
+<span class="w">             </span><span class="k">procedure</span><span class="p">,</span><span class="k">private</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">eq</span><span class="w"></span>
+<span class="w">             </span><span class="k">generic</span><span class="w">           </span><span class="kd">::</span><span class="w"> </span><span class="n">operator</span><span class="p">(</span><span class="o">==</span><span class="p">)</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">eq</span><span class="w"></span>
+<span class="w">       </span><span class="k">end type </span><span class="n">path</span><span class="w"></span>
+</code></pre></div>
+
+<p>It requires other modules from the package (<em>Note that you can get and build
+   the GPF package with just a Fortran compiler and make(1)</em>). This
+   repository is intended for allowing access to the module and its
+   dependencies via the <code>fpm</code> (Fortran Package Manager). Specifically,
+   the Fortran version (not the Haskell version).</p>
+<h2 id="documentation">DOCUMENTATION   <img alt="docs" src="docs/images/docs.gif"></h2>
+<p>The <a href="https://urbanjost.github.io/M_path/index.html">man-page</a></p>
+<h2 id="download">DOWNLOAD</h2>
+<p>To create a copy for alteration using <code>fpm</code> use or download the github
+   repository and build it with <code>fpm</code> ( as described at
+   <a href="https://github.com/fortran-lang/fpm">Fortran Package Manager</a> )
+   use</p>
+<div class="codehilite"><pre><span></span><code>    git clone https://github.com/urbanjost/M_path.git
+     <span class="nb">cd</span> M_path
+     fpm build
+     fpm <span class="nb">test</span>
+     fpm run -- .
+</code></pre></div>
+
+<p>but to use this as intended as a dependency in your fpm.toml project file
+   just add the following into your <code>fpm</code> manifest file:</p>
+<div class="codehilite"><pre><span></span><code><span class="w">     </span><span class="k">[dependencies]</span><span class="w"></span>
+<span class="w">     </span><span class="n">M_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;https://github.com/urbanjost/M_path.git&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+
+<hr>
         </div>
-		  
         <div class="col-md-4">
 	  <div class="well">
           <h2>Developer Info</h2>
           <h4>John S. Urban</h4>
           
-          
-			   
             <div class="text-center"><div class="btn-group" role="group">
-              
-              
-              
               <a class="btn btn-lg btn-primary" href="https://github.com/urbanjost/M_path"><i class="fa fa-github fa-lg"></i></a>
-				  
-				  
-              
-              
-              
-              
             </div></div>
-            
        </div>
        </div>
-       
       </div>
-      
-      
-      
-      
-		
       <div class="row">
         <div class="col-xs-6 col-sm-3">
               <h3>Source Files</h3>
-              <ul>
-                
-                  
-                    <li><a href='./sourcefile/m_path.f90.html'>M_path.f90</a></li>
-                  
-                
-                  
+              <ul>                    <li><a href='./sourcefile/m_path.f90.html'>M_path.f90</a></li>
                     <li><a href='./sourcefile/test_suite_m_path.f90.html'>test_suite_M_path.f90</a></li>
-                  
-                
-              </ul>
+</ul>
           </div>
-          
 		  <div class="col-xs-6 col-sm-3">
               <h3>Modules</h3>
-              <ul>
-                
-                  
-                    <li><a href='./module/m_path.html'>M_path</a></li>
-                  
-                
-              </ul>
+              <ul>                    <li><a href='./module/m_path.html'>M_path</a></li>
+</ul>
           </div>
-          
-          
 		  <div class="col-xs-6 col-sm-3">
               <h3>Procedures</h3>
-              <ul>
-                
-                  
-                    <li><a href='./interface/path.html'>path</a></li>
-                  
-                
-                  
+              <ul>                    <li><a href='./interface/path.html'>path</a></li>
                     <li><a href='./proc/test_branch.html'>test_branch</a></li>
-                  
-                
-                  
                     <li><a href='./proc/test_bud.html'>test_bud</a></li>
-                  
-                
-                  
                     <li><a href='./proc/test_construct_from_dat.html'>test_construct_from_dat</a></li>
-                  
-                
-                  
                     <li><a href='./proc/test_init_path.html'>test_init_path</a></li>
-                  
-                
-                  
                     <li><a href='./proc/test_leaf.html'>test_leaf</a></li>
-                  
-                
-                  
                     <li><a href='./proc/test_path_executable.html'>test_path_executable</a></li>
-                  
-                
-                  
                     <li><a href='./proc/test_path_exists.html'>test_path_exists</a></li>
-                  
-                
-                  
                     <li><a href='./proc/test_path_isdir.html'>test_path_isdir</a></li>
-                  
-                
-                  
                     <li><a href='./proc/test_path_readable.html'>test_path_readable</a></li>
-                  
-                
-                  
-                    <li><a href="./lists/procedures.html"><em>All procedures&hellip;</em></a></li>
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-              </ul>
+</ul>
           </div>
-          
-          
 		  <div class="col-xs-6 col-sm-3">
               <h3>Derived Types</h3>
-              <ul>
-                
-                  
-                    <li><a href='./type/path.html'>path</a></li>
-                  
-                
-              </ul>
+              <ul>                    <li><a href='./type/path.html'>path</a></li>
+</ul>
           </div>
-          
       </div>
-
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>M_math was developed by John S. Urban<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2021-09-18 05:54  
-          </p>
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2022-12-31 01:14            </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> M_math was developed by John S. Urban</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -303,14 +235,11 @@
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="./tipuesearch/tipuesearch_content.js"></script>
     <script src="./tipuesearch/tipuesearch_set.js"></script>
     <script src="./tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>
