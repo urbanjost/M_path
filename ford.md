@@ -7,7 +7,7 @@ output_dir: docs/fpm-ford
 project: M_math
 summary: OOP interface for operations on a POSIX pathname
 project_github: https://github.com/urbanjost/M_math
-project_download:
+project_download: https://github.com/urbanjost/M_math/archive/refs/heads/master.zip
 author: John S. Urban
 author_email: urbanjost@comcast.net
 github: https://github.com/urbanjost/M_path
