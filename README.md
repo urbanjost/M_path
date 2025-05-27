@@ -41,11 +41,13 @@
              generic           :: operator(==)  => eq
        end type path
 ```
+
 ---
+
    It requires other modules from the package (_Note that you can get and build
    the GPF package with just a Fortran compiler and make(1)_). This
    repository is intended for allowing access to the module and its
-   dependencies via the `fpm` (Fortran Package Manager).
+   dependencies via `fpm` (Fortran Package Manager).
 ---
 ![docs](docs/images/docs.gif)
 ---
@@ -70,10 +72,4 @@
 ```toml
      [dependencies]
      M_path = { git = "https://github.com/urbanjost/M_path.git" }
-```
-   To download the github repository and build it with `make` use
-```bash
-    git clone https://github.com/urbanjost/M_path.git
-     cd M_path/src
-     make
 ```
