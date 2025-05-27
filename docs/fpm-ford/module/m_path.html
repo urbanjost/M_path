@@ -1,0 +1,649 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="OOP interface for operations on a POSIX pathname">
+    <meta name="author" content="John S. Urban" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>M_path &ndash; M_math</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">M_math </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../program/runtest.html">Program</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>M_path
+      <small>Module</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title="100.0% of total for modules and submodules.">130 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/M_path.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/m_path.f90.html'>M_path.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">M_path</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
+  </script>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#inters-0"
+         aria-expanded="false" aria-controls="inters-0">
+         <h4 class="card-header bg-primary text-white">Interfaces</h4>
+      </a>
+      <div id="inters-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/m_path.html#interface-path">path</a>
+        </div>
+      </div>
+    </div>
+
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#types-0"
+         aria-expanded="false" aria-controls="types-0">
+         <h4 class="card-header bg-primary text-white">Derived Types</h4>
+      </a>
+      <div id="types-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/m_path.html#type-path">path</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+
+    <div class="col-md-9" id='text'>
+      <h2 id="name">NAME</h2>
+<div class="codehilite"><pre><span></span><code><span class="k">path</span><span class="p">(</span><span class="mi">3</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">[</span><span class="n">M_path</span><span class="o">]</span><span class="w"> </span><span class="n">OOP</span><span class="w"> </span><span class="n">interface</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">GNU</span><span class="w"> </span><span class="n">Linux</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">Unix</span><span class="w"> </span><span class="n">pathname</span>
+<span class="p">(</span><span class="nl">LICENSE</span><span class="p">:</span><span class="n">PD</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="synopsis">SYNOPSIS</h2>
+<div class="codehilite"><pre><span></span><code><span class="k">type</span><span class="w"> </span><span class="nx">path</span>
+
+<span class="w">   </span><span class="p">!</span><span class="w"> </span><span class="nx">COMPONENTS</span><span class="p">:</span>
+<span class="w">   </span><span class="nx">character</span><span class="p">(</span><span class="nx">len</span><span class="p">=:),</span><span class="nx">allocatable</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nx">name</span>
+<span class="nx">contains</span>
+
+<span class="w">   </span><span class="p">!</span><span class="w"> </span><span class="nx">METHODS</span><span class="p">:</span>
+<span class="w">   </span><span class="nx">procedure</span><span class="w">    </span><span class="o">::</span><span class="w"> </span><span class="nx">branch</span>
+<span class="w">   </span><span class="nx">procedure</span><span class="w">    </span><span class="o">::</span><span class="w"> </span><span class="nx">leaf</span>
+<span class="w">   </span><span class="nx">procedure</span><span class="w">    </span><span class="o">::</span><span class="w"> </span><span class="nx">stem</span>
+<span class="w">   </span><span class="nx">procedure</span><span class="w">    </span><span class="o">::</span><span class="w"> </span><span class="nx">bud</span>
+<span class="w">   </span><span class="nx">procedure</span><span class="w">    </span><span class="o">::</span><span class="w"> </span><span class="nx">init</span>
+<span class="w">   </span><span class="nx">procedure</span><span class="w">    </span><span class="o">::</span><span class="w"> </span><span class="nx">is_dir</span>
+<span class="w">   </span><span class="nx">procedure</span><span class="w">    </span><span class="o">::</span><span class="w"> </span><span class="nx">stat</span>
+<span class="w">   </span><span class="nx">procedure</span><span class="w">    </span><span class="o">::</span><span class="w"> </span><span class="nx">readable</span>
+<span class="w">   </span><span class="nx">procedure</span><span class="w">    </span><span class="o">::</span><span class="w"> </span><span class="nx">writable</span>
+<span class="w">   </span><span class="nx">procedure</span><span class="w">    </span><span class="o">::</span><span class="w"> </span><span class="nx">executable</span>
+<span class="w">   </span><span class="nx">procedure</span><span class="w">    </span><span class="o">::</span><span class="w"> </span><span class="nx">exists</span>
+<span class="w">   </span><span class="nx">procedure</span><span class="w">    </span><span class="o">::</span><span class="w"> </span><span class="nx">realpath</span>
+<span class="w">   </span><span class="nx">procedure</span><span class="w">    </span><span class="o">::</span><span class="w"> </span><span class="nx">splitup</span>
+<span class="w">   </span><span class="nx">procedure</span><span class="w">    </span><span class="o">::</span><span class="w"> </span><span class="nx">joinup</span>
+
+<span class="w">   </span><span class="p">!</span><span class="w"> </span><span class="nx">OVERLOADED</span><span class="w"> </span><span class="nx">OPERATORS</span><span class="w"> </span><span class="nx">FOR</span><span class="w"> </span><span class="nx">TYPE</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
+<span class="w">   </span><span class="nx">procedure</span><span class="p">,</span><span class="k">private</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nx">eq</span>
+<span class="w">   </span><span class="nx">generic</span><span class="w">           </span><span class="o">::</span><span class="w"> </span><span class="nx">operator</span><span class="p">(</span><span class="o">==</span><span class="p">)</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="nx">eq</span>
+<span class="nx">end</span><span class="w"> </span><span class="k">type</span><span class="w"> </span><span class="nx">path</span>
+</code></pre></div>
+
+<h2 id="description">DESCRIPTION</h2>
+<div class="codehilite"><pre><span></span><code><span class="nx">Given</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">pathname</span><span class="p">,</span><span class="w"> </span><span class="nx">resolve</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="nx">expand</span><span class="w"> </span><span class="nx">it</span><span class="w"> </span><span class="nx">into</span><span class="w"> </span><span class="nx">branch</span><span class="o">/</span><span class="nx">stem</span><span class="p">.</span><span class="nx">bud</span><span class="w"> </span><span class="k">and</span><span class="o">/</span><span class="k">or</span>
+<span class="nx">branch</span><span class="o">/</span><span class="nx">leaf</span><span class="p">,</span><span class="w"> </span><span class="nx">test</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">file</span><span class="w"> </span><span class="k">type</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">access</span><span class="w"> </span><span class="nx">privileges</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nx">file</span><span class="w"> </span><span class="nx">exists</span><span class="p">,</span>
+<span class="k">and</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">system</span><span class="w"> </span><span class="nx">statistics</span><span class="p">.</span>
+
+<span class="nx">Assumes</span><span class="w"> </span><span class="nx">directory</span><span class="w"> </span><span class="nx">separator</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">slash</span><span class="w"> </span><span class="p">(</span><span class="sc">&#39;/&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">that</span><span class="w"> </span><span class="nx">filename</span><span class="w"> </span><span class="nx">does</span><span class="w"> </span><span class="k">not</span>
+<span class="nx">contain</span><span class="w"> </span><span class="nx">trailing</span><span class="w"> </span><span class="nx">spaces</span><span class="p">.</span>
+
+<span class="w">   </span><span class="o">/</span><span class="nx">branch</span><span class="o">/</span><span class="nx">leaf</span>
+<span class="w">   </span><span class="o">/</span><span class="nx">branch</span><span class="o">/</span><span class="nx">stem</span><span class="p">.</span><span class="nx">bud</span>
+</code></pre></div>
+
+<h2 id="options">OPTIONS</h2>
+<div class="codehilite"><pre><span></span><code>    FILENAME  pathname
+</code></pre></div>
+
+<h2 id="returns">RETURNS</h2>
+<div class="codehilite"><pre><span></span><code><span class="nf">%name</span><span class="w">      </span><span class="n">name</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">file</span>
+
+<span class="nf">%branch</span><span class="p">()</span><span class="w">  </span><span class="n">Output</span><span class="w"> </span><span class="n">FILENAME</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">its</span><span class="w"> </span><span class="n">last</span><span class="w"> </span><span class="n">non</span><span class="o">-</span><span class="n">slash</span><span class="w"> </span><span class="n">component</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">trailing</span>
+<span class="w">           </span><span class="n">slashes</span><span class="w"> </span><span class="n">removed</span><span class="p">.</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">FILENAME</span><span class="w"> </span><span class="n">contains</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="sc">&#39;/&#39;</span><span class="w"> </span><span class="n">character</span><span class="p">,</span><span class="w"> </span><span class="n">output</span>
+<span class="w">           </span><span class="s">&quot;.&quot;</span><span class="w"> </span><span class="p">(</span><span class="n">meaning</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="n">directory</span><span class="p">).</span>
+
+<span class="nf">%leaf</span><span class="p">()</span><span class="w">    </span><span class="n">Output</span><span class="w"> </span><span class="n">FILENAME</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">anything</span><span class="w"> </span><span class="n">up</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">including</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">right</span><span class="o">-</span><span class="n">most</span>
+<span class="w">           </span><span class="n">slashes</span><span class="w"> </span><span class="n">removed</span><span class="p">.</span>
+<span class="nf">%stem</span><span class="p">()</span><span class="w">    </span><span class="n">Output</span><span class="w"> </span><span class="n">FILENAME</span><span class="w"> </span><span class="n">leaf</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">any</span><span class="w"> </span><span class="n">right</span><span class="o">-</span><span class="n">most</span><span class="w"> </span><span class="n">suffix</span><span class="w"> </span><span class="n">removed</span><span class="p">.</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">suffix</span>
+<span class="w">           </span><span class="n">is</span><span class="w"> </span><span class="n">anything</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">rightmost</span><span class="w"> </span><span class="n">period</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">filename</span><span class="w"> </span><span class="n">leaf</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span>
+<span class="w">           </span><span class="n">end</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">pathname</span><span class="p">.</span>
+<span class="nf">%bud</span><span class="p">()</span><span class="w">     </span><span class="n">Output</span><span class="w"> </span><span class="n">FILENAME</span><span class="w"> </span><span class="n">right</span><span class="o">-</span><span class="n">most</span><span class="w"> </span><span class="n">suffix</span><span class="p">.</span>
+
+<span class="nf">%is_dir</span><span class="p">()</span><span class="w">      </span><span class="n">a</span><span class="w"> </span><span class="n">logical</span><span class="w"> </span><span class="n">specifying</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">currently</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">directory</span><span class="w"> </span><span class="n">pathname</span><span class="p">.</span>
+<span class="nf">%exists</span><span class="p">()</span><span class="w">      </span><span class="n">determine</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="n">exists</span>
+<span class="nf">%readable</span><span class="p">()</span><span class="w">    </span><span class="n">determine</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">readable</span>
+<span class="nf">%writable</span><span class="p">()</span><span class="w">    </span><span class="n">determine</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">writable</span>
+<span class="nf">%executable</span><span class="p">()</span><span class="w">  </span><span class="n">determine</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">executable</span>
+
+<span class="nf">%stat</span><span class="p">()</span><span class="w">    </span><span class="n">an</span><span class="w"> </span><span class="n">array</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">integers</span><span class="w"> </span><span class="n">describing</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">file</span><span class="p">.</span>
+<span class="w">           </span><span class="n">returns</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">same</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">array</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">SYSTEM_STAT</span><span class="p">(</span><span class="mf">3f</span><span class="p">)</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">with</span>
+<span class="w">           </span><span class="n">the</span><span class="w"> </span><span class="n">difference</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">call</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">element</span><span class="w"> </span><span class="mf">14.</span>
+
+<span class="nf">%realpath</span><span class="p">()</span><span class="w">    </span><span class="n">resolve</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">pathname</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Posix</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">routine</span><span class="w"> </span><span class="n">realpath</span><span class="p">(</span><span class="mi">3</span><span class="n">c</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="example">EXAMPLE</h2>
+<p>Sample program:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">program</span><span class="w"> </span><span class="n">demo_path</span>
+<span class="n">use</span><span class="w"> </span><span class="n">M_path</span><span class="p">,</span><span class="w"> </span><span class="n">only</span><span class="w">   </span><span class="o">:</span><span class="w"> </span><span class="n">path</span>
+<span class="n">use</span><span class="w"> </span><span class="n">M_system</span><span class="p">,</span><span class="w"> </span><span class="n">only</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">system_getpwuid</span><span class="p">,</span><span class="w"> </span><span class="n">system_getgrgid</span>
+<span class="n">use</span><span class="w"> </span><span class="n">M_time</span><span class="p">,</span><span class="w">   </span><span class="n">only</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">fmtdate</span><span class="p">,</span><span class="w"> </span><span class="n">u2d</span>
+<span class="n">use</span><span class="p">,</span><span class="n">intrinsic</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="n">only</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">int8</span><span class="p">,</span><span class="w"> </span><span class="n">int16</span><span class="p">,</span><span class="w"> </span><span class="n">int32</span><span class="p">,</span><span class="w"> </span><span class="n">int64</span><span class="p">,</span><span class="w"> </span><span class="n">real32</span><span class="p">,</span><span class="w"> </span><span class="n">real64</span><span class="p">,</span><span class="w"> </span><span class="n">real128</span>
+<span class="n">character</span><span class="p">(</span><span class="n">len</span><span class="o">=*</span><span class="p">),</span><span class="n">parameter</span><span class="w">               </span><span class="o">::</span><span class="w"> </span><span class="n">fmt_date</span><span class="o">=</span><span class="err">&#39;</span><span class="n">year</span><span class="o">-</span><span class="n">month</span><span class="o">-</span><span class="n">day</span><span class="w"> </span><span class="n">hour</span><span class="o">:</span><span class="n">minute</span><span class="o">:</span><span class="n">second</span><span class="err">&#39;</span>
+<span class="n">type</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="w">                               </span><span class="o">::</span><span class="w"> </span><span class="n">file</span>
+<span class="n">character</span><span class="p">(</span><span class="n">len</span><span class="o">=:</span><span class="p">),</span><span class="n">allocatable</span><span class="w">             </span><span class="o">::</span><span class="w"> </span><span class="n">filename</span>
+<span class="n">integer</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="n">int64</span><span class="p">)</span><span class="w">                      </span><span class="o">::</span><span class="w"> </span><span class="n">buff</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">integer</span><span class="w">                                  </span><span class="o">::</span><span class="w"> </span><span class="n">i</span>
+<span class="w">   </span><span class="k">do</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">command_argument_count</span><span class="p">())</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">command_argument_count</span><span class="p">().</span><span class="n">eq</span><span class="mf">.0</span><span class="p">)</span><span class="n">then</span>
+<span class="w">       </span><span class="n">filename</span><span class="o">=</span><span class="sc">&#39;.&#39;</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">       </span><span class="n">call</span><span class="w"> </span><span class="n">getname</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">filename</span><span class="p">)</span>
+<span class="w">    </span><span class="n">endif</span>
+
+<span class="w">    </span><span class="n">file</span><span class="o">%</span><span class="n">name</span><span class="o">=</span><span class="n">filename</span>
+<span class="w">    </span><span class="o">!</span><span class="w"> </span><span class="k">or</span>
+<span class="w">    </span><span class="n">call</span><span class="w"> </span><span class="n">file</span><span class="k">%init</span><span class="p">(</span><span class="nc">filename</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="err">&#39;</span><span class="n">name</span><span class="p">........</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="n">file</span><span class="o">%</span><span class="n">name</span>
+<span class="w">    </span><span class="n">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="err">&#39;</span><span class="n">branch</span><span class="p">......</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="n">file</span><span class="o">%</span><span class="n">branch</span><span class="p">()</span>
+<span class="w">    </span><span class="n">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="err">&#39;</span><span class="n">leaf</span><span class="p">........</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="n">file</span><span class="o">%</span><span class="n">leaf</span><span class="p">()</span>
+<span class="w">    </span><span class="n">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="err">&#39;</span><span class="n">stem</span><span class="p">........</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="n">file</span><span class="o">%</span><span class="n">stem</span><span class="p">()</span>
+<span class="w">    </span><span class="n">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="err">&#39;</span><span class="n">bud</span><span class="p">.........</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="n">file</span><span class="o">%</span><span class="n">bud</span><span class="p">()</span>
+<span class="w">    </span><span class="n">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="err">&#39;</span><span class="n">is_dir</span><span class="p">......</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="n">file</span><span class="o">%</span><span class="n">is_dir</span><span class="p">()</span>
+<span class="w">    </span><span class="n">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="err">&#39;</span><span class="n">readable</span><span class="p">....</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="n">file</span><span class="o">%</span><span class="n">readable</span><span class="p">()</span>
+<span class="w">    </span><span class="n">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="err">&#39;</span><span class="n">writable</span><span class="p">....</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="n">file</span><span class="o">%</span><span class="n">writable</span><span class="p">()</span>
+<span class="w">    </span><span class="n">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="err">&#39;</span><span class="n">executable</span><span class="p">..</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="n">file</span><span class="o">%</span><span class="n">executable</span><span class="p">()</span>
+<span class="w">    </span><span class="n">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="err">&#39;</span><span class="n">exists</span><span class="p">......</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="n">file</span><span class="o">%</span><span class="n">exists</span><span class="p">()</span>
+<span class="w">    </span><span class="n">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="err">&#39;</span><span class="n">realpath</span><span class="p">....</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="n">file</span><span class="o">%</span><span class="n">realpath</span><span class="p">()</span>
+<span class="w">    </span><span class="n">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="err">&#39;</span><span class="n">stat</span><span class="p">........</span><span class="w"> </span><span class="err">&#39;</span>
+<span class="w">    </span><span class="n">buff</span><span class="o">=</span><span class="n">file</span><span class="o">%</span><span class="n">stat</span><span class="p">()</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">buff</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">then</span>
+<span class="w">     </span><span class="n">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s">&quot;(9x,&#39;Device ID(hex/decimal):&#39;, T40,Z0,&#39;h/&#39;,I0,&#39;d&#39;)&quot;</span><span class="p">)</span><span class="o">&amp;</span>
+<span class="w">     </span><span class="o">&amp;</span><span class="w"> </span><span class="n">buff</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">buff</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">     </span><span class="n">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s">&quot;(9x,&#39;Inode number:&#39;, T40, I0)&quot;</span><span class="p">)</span><span class="o">&amp;</span>
+<span class="w">     </span><span class="o">&amp;</span><span class="w"> </span><span class="n">buff</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="w">     </span><span class="n">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s">&quot;(9x,&#39;File mode (octal):&#39;, T40, O19)&quot;</span><span class="p">)</span><span class="o">&amp;</span>
+<span class="w">     </span><span class="o">&amp;</span><span class="w"> </span><span class="n">buff</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">     </span><span class="n">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s">&quot;(9x,&#39;Number of links:&#39;, T40, I0)&quot;</span><span class="p">)</span><span class="o">&amp;</span>
+<span class="w">     </span><span class="o">&amp;</span><span class="w"> </span><span class="n">buff</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="w">     </span><span class="n">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s">&quot;(9x,&#39;Owner&#39;&#39;s uid/username:&#39;, T40, I0,1x, A)&quot;</span><span class="p">)</span><span class="o">&amp;</span>
+<span class="w">     </span><span class="o">&amp;</span><span class="w"> </span><span class="n">buff</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="w"> </span><span class="n">system_getpwuid</span><span class="p">(</span><span class="n">buff</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="w">     </span><span class="n">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s">&quot;(9x,&#39;Owner&#39;&#39;s gid/group:&#39;, T40, I0,1x, A)&quot;</span><span class="p">)</span><span class="o">&amp;</span>
+<span class="w">     </span><span class="o">&amp;</span><span class="w"> </span><span class="n">buff</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span><span class="w"> </span><span class="n">system_getgrgid</span><span class="p">(</span><span class="n">buff</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+<span class="w">     </span><span class="n">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s">&quot;(9x,&#39;Device where located:&#39;, T40, I0)&quot;</span><span class="p">)</span><span class="o">&amp;</span>
+<span class="w">     </span><span class="o">&amp;</span><span class="w"> </span><span class="n">buff</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="w">     </span><span class="n">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s">&quot;(9x,&#39;File size(bytes):&#39;, T40, I0)&quot;</span><span class="p">)</span><span class="o">&amp;</span>
+<span class="w">     </span><span class="o">&amp;</span><span class="w"> </span><span class="n">buff</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="w">     </span><span class="n">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s">&quot;(9x,&#39;Last access time:&#39;, T40, I0,1x, A)&quot;</span><span class="p">)</span><span class="o">&amp;</span>
+<span class="w">     </span><span class="o">&amp;</span><span class="w"> </span><span class="n">buff</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span><span class="w"> </span><span class="n">fmtdate</span><span class="p">(</span><span class="n">u2d</span><span class="p">(</span><span class="kt">int</span><span class="p">(</span><span class="n">buff</span><span class="p">(</span><span class="mi">9</span><span class="p">))),</span><span class="n">fmt_date</span><span class="p">)</span>
+<span class="w">     </span><span class="n">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s">&quot;(9x,&#39;Last modification time:&#39;, T40, I0,1x, A)&quot;</span><span class="p">)</span><span class="o">&amp;</span>
+<span class="w">     </span><span class="o">&amp;</span><span class="w"> </span><span class="n">buff</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">u2d</span><span class="p">(</span><span class="kt">int</span><span class="p">(</span><span class="n">buff</span><span class="p">(</span><span class="mi">10</span><span class="p">))),</span><span class="n">fmt_date</span><span class="p">)</span>
+<span class="w">     </span><span class="n">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s">&quot;(9x,&#39;Last status change time:&#39;, T40, I0,1x, A)&quot;</span><span class="p">)</span><span class="o">&amp;</span>
+<span class="w">     </span><span class="o">&amp;</span><span class="w"> </span><span class="n">buff</span><span class="p">(</span><span class="mi">11</span><span class="p">),</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">u2d</span><span class="p">(</span><span class="kt">int</span><span class="p">(</span><span class="n">buff</span><span class="p">(</span><span class="mi">11</span><span class="p">))),</span><span class="n">fmt_date</span><span class="p">)</span>
+<span class="w">     </span><span class="n">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s">&quot;(9x,&#39;Preferred block size(bytes):&#39;, T40, I0)&quot;</span><span class="p">)</span><span class="o">&amp;</span>
+<span class="w">     </span><span class="o">&amp;</span><span class="w"> </span><span class="n">buff</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+<span class="w">     </span><span class="n">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s">&quot;(9x,&#39;No. of blocks allocated:&#39;, T40, I0)&quot;</span><span class="p">)</span><span class="o">&amp;</span>
+<span class="w">     </span><span class="o">&amp;</span><span class="w"> </span><span class="n">buff</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">     </span><span class="n">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="err">&#39;</span><span class="o">*</span><span class="n">path</span><span class="o">%</span><span class="n">stat</span><span class="o">*</span><span class="w"> </span><span class="n">error</span><span class="o">:</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="n">file</span><span class="o">%</span><span class="n">name</span><span class="p">,</span><span class="err">&#39;</span><span class="w"> </span><span class="n">status</span><span class="o">=</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="n">buff</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span>
+<span class="w">    </span><span class="n">endif</span>
+<span class="w">    </span><span class="n">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span>
+<span class="w">   </span><span class="n">enddo</span>
+
+<span class="n">contains</span>
+<span class="n">subroutine</span><span class="w"> </span><span class="n">getname</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">fn</span><span class="p">)</span>
+<span class="n">integer</span><span class="p">,</span><span class="n">intent</span><span class="p">(</span><span class="k">in</span><span class="p">)</span><span class="w">                       </span><span class="o">::</span><span class="w"> </span><span class="n">i</span>
+<span class="n">character</span><span class="p">(</span><span class="n">len</span><span class="o">=:</span><span class="p">),</span><span class="n">allocatable</span><span class="p">,</span><span class="n">intent</span><span class="p">(</span><span class="k">out</span><span class="p">)</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">fn</span>
+<span class="n">integer</span><span class="w">                                  </span><span class="o">::</span><span class="w"> </span><span class="n">fn_length</span>
+<span class="o">!</span><span class="w"> </span><span class="n">get</span><span class="w"> </span><span class="n">pathname</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="n">arguments</span>
+<span class="w">   </span><span class="n">call</span><span class="w"> </span><span class="n">get_command_argument</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="o">=</span><span class="n">fn_length</span><span class="p">)</span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">allocated</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span><span class="n">deallocate</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="w">   </span><span class="n">allocate</span><span class="p">(</span><span class="n">character</span><span class="p">(</span><span class="n">len</span><span class="o">=</span><span class="n">fn_length</span><span class="p">)</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">fn</span><span class="p">)</span>
+<span class="w">   </span><span class="n">call</span><span class="w"> </span><span class="n">get_command_argument</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="o">=</span><span class="n">fn</span><span class="p">)</span>
+<span class="n">end</span><span class="w"> </span><span class="n">subroutine</span><span class="w"> </span><span class="n">getname</span>
+<span class="n">end</span><span class="w"> </span><span class="n">program</span><span class="w"> </span><span class="n">demo_path</span>
+</code></pre></div>
+
+<p>Results:</p>
+<p>Sample program executions:</p>
+<div class="codehilite"><pre><span></span><code> demo_path $HOME $HOME/.bashrc
+
+ name........ /home/urbanjs/V600
+ branch...... /home/urbanjs
+ leaf........ V600
+ stem........ V600
+ bud.........
+ is_dir......  T
+ readable....  T
+ writable...   T
+ executable..  T
+ exists......  T
+ realpath....  /home/urbanjs/V600
+ stat........
+         Device ID(hex/decimal):       3E6BE045h/1047257157d
+         Inode number:                 281474977443215
+         File mode (octal):                          40700
+         Number of links:              1
+         Owner&#39;s uid/username:         197609 JSU
+         Owner&#39;s gid/group:            197121 None
+         Device where located:         0
+         File size(bytes):             0
+         Last access time:             1559495702 2019-06-02 13:15:02
+         Last modification time:       1559495702 2019-06-02 13:15:02
+         Last status change time:      1559495702 2019-06-02 13:15:02
+         Preferred block size(bytes):  65536
+         No. of blocks allocated:      92
+
+ name........ /home/urbanjs/V600/.bashrc
+ branch...... /home/urbanjs/V600
+ leaf........ .bashrc
+ stem........ .bashrc
+ bud.........
+ is_dir......  F
+ readable....  T
+ writable...   T
+ executable..  T
+ exists......  T
+ realpath....  /home/urbanjs/V600/.bashrc
+ stat........
+         Device ID(hex/decimal):       3E6BE045h/1047257157d
+         Inode number:                 59672695062674129
+         File mode (octal):                         100744
+         Number of links:              1
+         Owner&#39;s uid/username:         197609 JSU
+         Owner&#39;s gid/group:            4294967295 Unknown+Group
+         Device where located:         0
+         File size(bytes):             8744
+         Last access time:             1434310665 2015-06-14 15:37:45
+         Last modification time:       1533428694 2018-08-04 20:24:54
+         Last status change time:      1533428694 2018-08-04 20:24:54
+         Preferred block size(bytes):  65536
+         No. of blocks allocated:      12
+</code></pre></div>
+
+<h2 id="author">AUTHOR</h2>
+<div class="codehilite"><pre><span></span><code>John S. Urban
+</code></pre></div>
+
+<h2 id="license">LICENSE</h2>
+<div class="codehilite"><pre><span></span><code>Public Domain
+</code></pre></div>
+
+<p>submodule (M_io) M_path
+end submodule M_path</p>
+<br>          <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item">M_io</li>
+                  <li class="list-inline-item">M_system</li>
+                  <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_fortran_env'>iso_fortran_env</a></li>
+                  <li class="list-inline-item">M_strings</li>
+              </ul>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+      
+      <br>
+
+
+
+
+        <section>
+          <h2>Interfaces</h2>
+              <div class="card">
+    <div class="card-header bg-light codesum">
+      <span class="anchor" id="interface-path"></span>
+      <h3>public        interface <a href='../interface/path.html'>path</a> 
+      </h3>
+    </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private  function construct_from_dat(dat)  
+
+    </h3>
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-dat"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dat</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/path.html'>path</a>)</small>
+    </h4>
+    
+
+          </li>
+    </ul>
+  </div>
+
+        </section>
+        <br>
+
+
+        <section>
+          <h2>Derived Types</h2>
+              <div class="card">
+    <div class="card-header codesum">
+      <span class="anchor" id="type-path"></span>
+      <h3>
+        type, public&nbsp;::&nbsp;
+        <a href='../type/path.html'>path</a>
+        
+      </h3>
+    </div>
+    <div class="card-body">
+      
+
+        <h4>Components</h4>
+          <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-name"></span>
+              character(len=:),
+            </td>
+              <td>public,</td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>name</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+        <h4>Constructor</h4>
+          
+        <table class="table table-striped varlist">
+          <tbody>
+                <tr>
+                  <td>
+                        private
+
+                    
+                    function
+                    <strong>construct_from_dat</strong>
+                    (dat)
+                  </td>
+                  <td></td>
+                </tr>
+          </tbody>
+        </table>
+
+
+        <h4>Type-Bound Procedures</h4>
+        <table class="table table-striped varlist">
+          <tbody>
+              <tr>
+                <td>  procedure, public ::
+  <strong><a href='../type/path.html#boundprocedure-branch'>branch</a></strong></td>
+                  <td></td>
+              </tr>
+              <tr>
+                <td>  procedure, public ::
+  <strong><a href='../type/path.html#boundprocedure-bud'>bud</a></strong></td>
+                  <td></td>
+              </tr>
+              <tr>
+                <td>  procedure, public ::
+  <strong><a href='../type/path.html#boundprocedure-executable'>executable</a></strong> => path_executable</td>
+                  <td></td>
+              </tr>
+              <tr>
+                <td>  procedure, public ::
+  <strong><a href='../type/path.html#boundprocedure-exists'>exists</a></strong> => path_exists</td>
+                  <td></td>
+              </tr>
+              <tr>
+                <td>  procedure, public ::
+  <strong><a href='../type/path.html#boundprocedure-init'>init</a></strong> => init_path</td>
+                  <td></td>
+              </tr>
+              <tr>
+                <td>  procedure, public ::
+  <strong><a href='../type/path.html#boundprocedure-is_dir'>is_dir</a></strong> => path_isdir</td>
+                  <td></td>
+              </tr>
+              <tr>
+                <td>  procedure, public ::
+  <strong><a href='../type/path.html#boundprocedure-leaf'>leaf</a></strong></td>
+                  <td></td>
+              </tr>
+              <tr>
+                <td>  procedure, public ::
+  <strong><a href='../type/path.html#boundprocedure-readable'>readable</a></strong> => path_readable</td>
+                  <td></td>
+              </tr>
+              <tr>
+                <td>  procedure, public ::
+  <strong><a href='../type/path.html#boundprocedure-realpath'>realpath</a></strong> => path_realpath</td>
+                  <td></td>
+              </tr>
+              <tr>
+                <td>  procedure, public ::
+  <strong><a href='../type/path.html#boundprocedure-stat'>stat</a></strong> => path_stat</td>
+                  <td></td>
+              </tr>
+              <tr>
+                <td>  procedure, public ::
+  <strong><a href='../type/path.html#boundprocedure-stem'>stem</a></strong></td>
+                  <td></td>
+              </tr>
+              <tr>
+                <td>  procedure, public ::
+  <strong><a href='../type/path.html#boundprocedure-writable'>writable</a></strong> => path_writable</td>
+                  <td></td>
+              </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+
+
+
+
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              M_math
+ was developed by John S. Urban<br>              &copy; 2025 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2025-05-27 05:14 +0000             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>
