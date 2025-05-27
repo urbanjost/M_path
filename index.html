@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,14 +12,29 @@
 
     <title> M_math </title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="./css/pygments.css" rel="stylesheet">
-    <link href="./css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="./css/fontawesome.min.css" rel="stylesheet">
+    <link href="./css/brands.min.css" rel="stylesheet">
+    <link href="./css/regular.min.css" rel="stylesheet">
+    <link href="./css/solid.min.css" rel="stylesheet">
+    <link href="./css/v4-font-face.min.css" rel="stylesheet">
+    <link href="./css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
     <link href="./css/local.css" rel="stylesheet">
-      <link  href="./tipuesearch/tipuesearch.css" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="./css/pygments.css" rel="stylesheet">
     <script src="./js/svg-pan-zoom.min.js"></script>
   </head>
 
@@ -62,29 +79,38 @@
     </div>
 
     <div class="container">
-      <!-- Main component for a primary marketing message or call to action -->
-      <div class="p-5 mb-4 bg-light border rounded-3" id="jumbotron">
-        <p>OOP interface for operations on a POSIX pathname</p>
-	<p> Find us on&hellip;</p>
-        <p>
-          <a class="btn btn-lg btn-primary" href="https://github.com/urbanjost/M_math" role="button">GitHub</a>
-        </p>
-      </div>
+  <!-- Main component for a primary marketing message or call to action -->
+    <div class="p-5 mb-4 bg-light border rounded-3" id="jumbotron">
+      <p>OOP interface for operations on a POSIX pathname</p>
+        <p> Find us on&hellip;</p>
+      <p>
+        <a class="btn btn-lg btn-primary" href="https://github.com/urbanjost/M_math" role="button">GitHub</a>
+        
+        
+        
+        
+        <a class="btn btn-lg btn-danger" style="float:right" href="https://github.com/urbanjost/M_math/archive/refs/heads/master.zip" role="button">Download the Source</a>
+      </p>
+    </div>
 
       <div class="row" id='text'>
         <div class=col-md-8>
           <h1>M_math</h1>
           <h1 id="m_path">M_path</h1>
 <h2 id="fortran-oop-interface-for-a-posix-pathname">Fortran OOP interface for a  POSIX pathname</h2>
-<p>The M_path(3f) module creates an OOP (Object Oriented Programming) interface to other modules in the 
+<p>The M_path(3f) module creates an OOP (Object Oriented Programming)
+   interface to other modules in the
    <a href="https://github.com/urbanjost?tab=repositories">GPF </a>
-   (General Purpose Fortran) package found at</p>
-<div class="codehilite"><pre><span></span><code>    git clone https://github.com/urbanjost/general-purpose-fortran
+   (General Purpose Fortran) package which can be built using</p>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/urbanjost/general-purpose-fortran
+<span class="w">    </span><span class="nb">cd</span><span class="w"> </span>general-purpose-fortran
+<span class="w">    </span>make
 </code></pre></div>
 
-<p>It allows the typical components of a pathname on a POSIX system (Such as GNU/Linux, Unix
-   and Cygwin) to be accessed easily, to render the full pathname of the path and to get basic
-   file properties (permissions, size, ownership, &hellip;). The type defined is</p>
+<p>It allows the typical components of a pathname on a POSIX system
+   (Such as GNU/Linux, Unix and Cygwin) to be accessed easily, to
+   render the full pathname of the path and to get basic file properties
+   (permissions, size, ownership, &hellip;). The type defined is</p>
 <div class="codehilite"><pre><span></span><code><span class="w">       </span><span class="k">type </span><span class="n">path</span>
 
 <span class="w">             </span><span class="c">! COMPONENTS:</span>
@@ -114,20 +140,18 @@
 <p>It requires other modules from the package (<em>Note that you can get and build
    the GPF package with just a Fortran compiler and make(1)</em>). This
    repository is intended for allowing access to the module and its
-   dependencies via the <code>fpm</code> (Fortran Package Manager). Specifically,
-   the Fortran version (not the Haskell version).</p>
+   dependencies via the <code>fpm</code> (Fortran Package Manager).</p>
 <hr>
 <h2 id="_1"><img alt="docs" src="docs/images/docs.gif"></h2>
 <h2 id="documentation">DOCUMENTATION</h2>
 <p>The <a href="https://urbanjost.github.io/M_path/index.html">man-page</a></p>
 <h2 id="download">DOWNLOAD</h2>
-<p>To create a copy for alteration using <code>fpm</code> use or download the github
+<p>To download the github
    repository and build it with <code>fpm</code> ( as described at
    <a href="https://github.com/fortran-lang/fpm">Fortran Package Manager</a> )
    use</p>
 <div class="codehilite"><pre><span></span><code><span class="w">    </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/urbanjost/M_path.git
 <span class="w">     </span><span class="nb">cd</span><span class="w"> </span>M_path
-<span class="w">     </span>fpm<span class="w"> </span>build
 <span class="w">     </span>fpm<span class="w"> </span><span class="nb">test</span>
 <span class="w">     </span>fpm<span class="w"> </span>run<span class="w"> </span>--<span class="w"> </span>.
 </code></pre></div>
@@ -138,15 +162,28 @@
 <span class="w">     </span><span class="n">M_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;https://github.com/urbanjost/M_path.git&quot;</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 
+<p>To download the github repository and build it with <code>make</code> use</p>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/urbanjost/M_path.git
+<span class="w">     </span><span class="nb">cd</span><span class="w"> </span>M_path/src
+<span class="w">     </span>make
+</code></pre></div>
+
 <hr>
         </div>
           <div class="col-md-4">
-	        <div class="card card-body bg-light">
+            <div class="card card-body bg-light">
               <h2 class="card-title">Developer Info</h2>
               <h4 class="card-text">John S. Urban</h4>
               <p class="card-text"></p>
                 <div class="text-center"><div class="btn-group" role="group">
-                      <a class="btn btn-lg btn-primary" href="https://github.com/urbanjost/M_path"><i class="fa fa-github fa-lg"></i></a>
+                    
+                    <a class="btn btn-lg btn-primary" href="https://github.com/urbanjost/M_path"><i class="fa fa-github fa-lg"></i></a>
+                    
+                    
+                    
+                    
+                    
+                    
                 </div></div>
             </div>
           </div>
@@ -203,40 +240,21 @@
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>M_math was developed by John S. Urban<br>&copy; 2024 
+          <div class="col">
+            <p>
+              M_math
+ was developed by John S. Urban<br>              &copy; 2025 
 </p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-03-29 08:16              </p>
+ on 2025-05-27 05:14 +0000             </p>
           </div>
         </div>
         <br>
       </div> <!-- /container -->
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
-
-    <!-- MathJax JavaScript
-             ================================================== -->
-             <!-- Placed at the end of the document so the pages load faster -->
-        <script type="text/x-mathjax-config">
-          MathJax.Hub.Config({
-          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-          });
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-          <script src="./tipuesearch/tipuesearch_content.js"></script>
-          <script src="./tipuesearch/tipuesearch_set.js"></script>
-          <script src="./tipuesearch/tipuesearch.js"></script>
-
   </body>
 </html>
