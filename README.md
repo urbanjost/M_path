@@ -51,11 +51,11 @@
 ---
 ![docs](docs/images/docs.gif)
 ---
-## DOCUMENTATION
+## Documentation
 
    The [man-page](https://urbanjost.github.io/M_path/index.html)
 
-## DOWNLOAD
+## Download
 
    To download the github repository and build it with `fpm` ( as
    described at
